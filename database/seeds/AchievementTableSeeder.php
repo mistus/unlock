@@ -5,10 +5,11 @@ use app\Models\AchievementMaster\Achievement as AchievementModel;
 
 class AchievementTableSeeder extends Seeder
 {
-	const CATEGORY = 0;
-	const SUBCATEGORY = 1;
-	const ACHIEVEMENT_NAME = 2;
-	const ACHIEVEMENT_CONTENT = 3;
+	const ID = 0;
+	const CATEGORY = 1;
+	const SUBCATEGORY = 2;
+	const ACHIEVEMENT_NAME = 3;
+	const ACHIEVEMENT_CONTENT = 4;
 
 	public function run()
 	{
@@ -22,9 +23,10 @@ class AchievementTableSeeder extends Seeder
 		//読み切るまでに実行する
 		while (($CsvLine = fgetcsv($csvFile, "r")) != false) {
 			$achievementModel = new AchievementModel();
+			$achievementModel->id = $CsvLine[self::ID];
 			$achievementModel->category = $CsvLine[self::CATEGORY];
 			$achievementModel->subCategory = $CsvLine[self::SUBCATEGORY];
-			$achievementModel->name = $CsvLine[self::ACHIEVEMENT_CONTENT];
+			$achievementModel->name = $CsvLine[self::ACHIEVEMENT_NAME];
 			$achievementModel->content = $CsvLine[self::ACHIEVEMENT_CONTENT];
 			$achievementModel->save();
 		}
