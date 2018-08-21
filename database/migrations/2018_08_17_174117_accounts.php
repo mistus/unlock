@@ -12,7 +12,7 @@ class Accounts extends Migration
 	 */
 	public function up()
 	{
-		Schema::connection('achievement')->
+		Schema::connection('accounts')->
 		create('accounts', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('account_id');
