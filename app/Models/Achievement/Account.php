@@ -4,5 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
-	protected $timestamps = false;
+	protected $connection= 'achievement';
+
+	public $timestamps = false;
 }
