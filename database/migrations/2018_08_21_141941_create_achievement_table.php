@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Accounts extends Migration
+class CreateAchievementTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -13,10 +13,10 @@ class Accounts extends Migration
 	public function up()
 	{
 		Schema::connection('achievement')->
-		create('accounts', function (Blueprint $table) {
+		create('achievements', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('account_id');
-			$table->string('nickname');
+			$table->integer('achievement_id');
 		});
 	}
 
@@ -28,6 +28,6 @@ class Accounts extends Migration
 	public function down()
 	{
 		Schema::connection('achievement')
-			->drop('accounts');
+			->drop('achievements');
 	}
 }

@@ -29,6 +29,7 @@ class Achievements extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('achievements');
+		Schema::connection('achievement_master')
+			->drop('achievements');
 	}
 }
