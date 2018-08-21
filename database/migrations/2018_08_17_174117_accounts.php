@@ -15,7 +15,6 @@ class Accounts extends Migration
 		Schema::connection('achievement')->
 		create('accounts', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('account_id');
 			$table->string('nickname');
 		});
 	}
