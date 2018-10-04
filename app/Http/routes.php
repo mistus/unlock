@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/information', function () {
+//	return view('/informationPage/InformationIndex', ["a" => 15225536]);
+//});
+
+Route::get('/information','InformationPageController@getList');
