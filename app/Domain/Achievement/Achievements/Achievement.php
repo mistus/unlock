@@ -44,4 +44,9 @@ class Achievement
 	{
 		return $this->achievementContent;
 	}
+
+	public function getMasterId()
+	{
+		return $this->achievementMasterId;
+	}
 }

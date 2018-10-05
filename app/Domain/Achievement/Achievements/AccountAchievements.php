@@ -41,4 +41,11 @@ class AccountAchievements
 	{
 		return $this->achievementCollection;
 	}
+
+	public function hasAchievement(int $masterId)
+	{
+		return $this->achievementCollection->contains(function($key, Achievement $achievement) use ($masterId) {
+			return $achievement->getMasterId() === $masterId;
+		});
+	}
 }

@@ -90,7 +90,7 @@ class InformationPageController extends Controller
 		$accountAchievementRepository = new AccountAchievementRepository();
 		$accountAchievement = $accountAchievementRepository->find($accountId);
 
-		return view('/informationPage/AchievementUpdatePage')
+		return view('/informationPage/UpdatePage')
 			->with('achievementMasters',$achievementMasterCollection)
 			->with('accountAchievement',$accountAchievement);
 	}

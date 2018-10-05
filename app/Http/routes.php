@@ -25,4 +25,5 @@ Route::get('/accountDetailPage/{AccountId}','InformationPageController@getAccoun
 Route::get('/registerPage','InformationPageController@getRegisterPage');
 Route::post('/register','InformationPageController@postRegister');
 
-Route::get('/registerPage','InformationPageController@getUpdatePage');
+Route::get('/updatePage/{AccountId}','InformationPageController@getUpdatePage');
+
