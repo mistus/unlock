@@ -6,12 +6,6 @@ use app\Models\Achievement\Achievement as AchievementModel;
 
 class InformationPageController extends Controller
 {
-
-	public function getIndex(){
-		return '1233456';
-	}
-
-
 	public function getList(Request $request)
 	{
 		$repository = new AccountAchievementRepository();
@@ -19,5 +13,19 @@ class InformationPageController extends Controller
 
 		return view('/informationPage/InformationIndex')
 			->with('accountAchievements',$accountAchievementCollection);
+	}
+
+	public function getAccountDetailPage(Request $request, int $accountId)
+	{
+		$repository = new AccountAchievementRepository();
+		$accountAchievement = $repository->find($accountId);
+
+		//$accountAchievementだけでいける？
+		return view('/informationPage/AccountDetailPage')
+			->with('accountAchievement',$accountAchievement)
+			->with('achievements',$accountAchievement->getAchievements());
+
+//		return view('/informationPage/AccountDetailPage')
+//			->with('accountAchievement',$accountAchievement);
 	}
 }

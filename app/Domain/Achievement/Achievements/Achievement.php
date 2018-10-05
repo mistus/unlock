@@ -30,6 +30,11 @@ class Achievement
 		$this->achievementContent = $achievementContent;
 	}
 
+	public function getAchievementId()
+	{
+		return $this->achievementId;
+	}
+
 	public function getAchievementName()
 	{
 		return $this->achievementName;

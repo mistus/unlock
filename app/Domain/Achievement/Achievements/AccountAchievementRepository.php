@@ -26,9 +26,8 @@ class AccountAchievementRepository
 	 */
 	public function find($accountId)
 	{
-		$accountModel = AccountModel::find($accountId)
-			->with('master_achievement')
-			->get();
+		$accountModel = AccountModel::with('achievements.master_achievement')
+			->find($accountId);
 
 		return $this->_createAchievements($accountModel);
 	}

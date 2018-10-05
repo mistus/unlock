@@ -130,7 +130,11 @@
                     </tr>
                     @foreach ($accountAchievements as $accountAchievement)
                         <tr>
-                            <th>{{$accountAchievement->getAccountId()}}</th>
+                            <th>
+                                <a href="accountDetailPage/{{$accountAchievement->getAccountId()}}">
+                                    {{$accountAchievement->getAccountId()}}
+                                </a>
+                            </th>
                             <td label="ニックネーム"><p>{{$accountAchievement->getNickName()}}</p></td>
                             <td label="実績数"><p>{{$accountAchievement->getAchievements()->count()}}</p></td>
                         </tr>
