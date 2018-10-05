@@ -20,5 +20,7 @@ Route::get('/', function () {
 //});
 
 Route::get('/information','InformationPageController@getList');
-
 Route::get('/accountDetailPage/{AccountId}','InformationPageController@getAccountDetailPage');
+
+Route::get('/registerPage','InformationPageController@getRegisterPage');
+Route::post('/register','InformationPageController@postRegister');
