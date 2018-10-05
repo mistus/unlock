@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use app\Domain\AchievementMaster\AchievementMasterRepository;
 use app\Domain\Achievements\AccountAchievementRepository;
 use Illuminate\Http\Request;
 use app\Models\Achievement\Account as AccountModel;
@@ -77,5 +78,20 @@ class InformationPageController extends Controller
 		$accountModel->nickname = $nickname;
 		$accountModel->save();
 		return $accountModel->id;
+	}
+
+	public function getUpdatePage(Request $request, int $accountId)
+	{
+		//全部の功績を取る
+		$achievementMasterRepository = new AchievementMasterRepository();
+		$achievementMasterCollection = $achievementMasterRepository->getAll();
+
+		//アカウントの功績を取る。
+		$accountAchievementRepository = new AccountAchievementRepository();
+		$accountAchievement = $accountAchievementRepository->find($accountId);
+
+		return view('/informationPage/AchievementUpdatePage')
+			->with('achievementMasters',$achievementMasterCollection)
+			->with('accountAchievement',$accountAchievement);
 	}
 }
