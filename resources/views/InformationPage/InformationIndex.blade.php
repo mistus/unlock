@@ -10,64 +10,133 @@
                 padding: 0;
                 width: 100%;
                 height: 100%;
-                color: #B0BEC5;
+                /*color: #B0BEC5;*/
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
+                /*font-family: 'Lato';*/
             }
 
+            /* 内容のpadding */
             .container {
+                padding: 100px;
                 text-align: center;
                 display: table-cell;
-                vertical-align: middle;
+                /*vertical-align: middle;*/
             }
 
-            .content {
+
+            /* タイトル用 */
+            h1 {
+                position: relative;
                 text-align: center;
+            }
+            h1 span {
+                position: relative;
+                z-index: 2;
                 display: inline-block;
+                margin: 0 2.5em;
+                padding: 0 1em;
+                background-color: #fff;
+                text-align: left;
+            }
+            h1::before {
+                position: absolute;
+                top: 50%;
+                z-index: 1;
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: #ccc;
             }
 
-            .title {
-                font-size: 96px;
-                margin-bottom: 40px;
+            /* 表用 */
+            .cp_table *, .cp_table *:before, .cp_table *:after {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
             }
-
-            .quote {
-                font-size: 24px;
+            .cp_table {
+                width: 100%;
+                border-collapse: collapse;
+                border-right: 1px solid #dddddd;
+            }
+            .cp_table thead th {
+                padding: 10px 15px;
+                border-right: 1px solid #ffffff;
+                border-bottom: 1px solid #ffffff;
+                background: #dddddd;
+            }
+            .cp_table thead th:last-child {
+                border-right: 1px solid #dddddd;
+            }
+            .cp_table tbody th {
+                padding: 10px 15px;
+                vertical-align: top;
+                border-bottom: 1px solid #ffffff;
+                background: #dddddd;
+                white-space: nowrap;
+            }
+            .cp_table tbody tr:last-child th {
+                border-bottom: 1px solid #dddddd;
+            }
+            .cp_table tbody td {
+                padding: 10px 15px;
+                vertical-align: top;
+                border-bottom: 1px solid #dddddd;
+                border-left: 1px solid #dddddd;
+                background: #ffffff;
+            }
+            @media only screen and (max-width:480px) {
+                .cp_table thead {
+                    display: none;
+                }
+                .cp_table tbody th {
+                    display: block;
+                }
+                .cp_table tbody td {
+                    display: block;
+                    padding: 10px 5px;
+                }
+                .cp_table tbody td::before {
+                    font-weight: bold;
+                    float: left;/*上のth要素が長い場合こちらを解除すると1段落下り見やすくなります*/
+                    padding: 0.5em 0;
+                    content: attr(label);
+                }
+                .cp_table tbody td p {
+                    padding: 0.5em 0 0 1em;
+                    margin: 0;
+                }
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="content">
-                <div class="title">Laravel Tst</div>
-                <div class="quote">{{ Inspiring::quote() }}</div>
+            <h1><span>スーパー一覧ページ</span></h1>
 
-                <table>
+            <table class="cp_table">
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>ニックネーム</th>
                         <th>実績数</th>
                     </tr>
-
-                    {{--<tr>--}}
-                        {{--<td>1</td>--}}
-                        {{--<td>キュウリ</td>--}}
-                        {{--<td>304</td>--}}
-                    {{--</tr>--}}
-
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>テスト</th>
+                        <td label="ニックネーム"><p>キュウリ</p></td>
+                        <td label="実績数"><p>100</p></td>
+                    </tr>
                     @foreach ($accountAchievements as $accountAchievement)
                         <tr>
                             <th>{{$accountAchievement->getAccountId()}}</th>
-                            <th>{{$accountAchievement->getNickName()}}</th>
-                            <th>{{$accountAchievement->getAchievements()->count()}}</th>
+                            <td label="ニックネーム"><p>{{$accountAchievement->getNickName()}}</p></td>
+                            <td label="実績数"><p>{{$accountAchievement->getAchievements()->count()}}</p></td>
                         </tr>
                     @endforeach
-
-                </table>
-
-
-            </div>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
