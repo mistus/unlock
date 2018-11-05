@@ -111,9 +111,12 @@
         </style>
     </head>
     <body>
+    @extends('bar.bar')
         <div class="container">
             <h1><span>スーパーアカウント詳細ページ</span></h1>
             <h3><span>アカウントID: {{$accountAchievement->getAccountId()}} ニックネーム: {{$accountAchievement->getNickName()}}</span></h3>
+            <button><a href="/updatePage/{{$accountAchievement->getAccountId()}}">更新ページへ</a></button>
+
             <table class="cp_table">
                 <thead>
                     <tr>
@@ -123,11 +126,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>テスト</th>
-                        <td label="実績名"><p>キュウリ</p></td>
-                        <td label="実績内容"><p>キュウリを食べる</p></td>
-                    </tr>
                     @foreach ($achievements as $achievement)
                         <tr>
                             <th>{{$achievement->getAchievementId()}}</th>

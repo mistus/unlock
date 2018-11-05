@@ -111,6 +111,7 @@
         </style>
     </head>
     <body>
+    @extends('bar.bar')
         <div class="container">
             <h1><span>スーパー一覧ページ</span></h1>
 

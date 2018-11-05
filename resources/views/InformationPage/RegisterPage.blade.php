@@ -110,6 +110,7 @@
         </style>
     </head>
     <body>
+    @extends('bar.bar')
         <div class="container">
             <h1><span>スーパーアカウント登録ページ</span></h1>
             <div class="register">

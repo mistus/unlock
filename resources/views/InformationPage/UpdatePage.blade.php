@@ -170,6 +170,7 @@
         </style>
     </head>
     <body>
+    @extends('bar.bar')
         <div class="container" >
             <h1><span>スーパー一覧ページ</span></h1>
             <h3><span>アカウントID: {{$accountAchievement->getAccountId()}} ニックネーム: {{$accountAchievement->getNickName()}}</span></h3>

@@ -109,6 +109,6 @@ class InformationPageController extends Controller
 
 		$accountAchievementRepository->persist($accountAchievements);
 
-		return $this->getUpdatePage($request, $accountId);
+		return $this->getAccountDetailPage($request, $accountId);
 	}
 }
