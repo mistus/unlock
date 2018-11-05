@@ -26,4 +26,4 @@ Route::get('/registerPage','InformationPageController@getRegisterPage');
 Route::post('/register','InformationPageController@postRegister');
 
 Route::get('/updatePage/{AccountId}','InformationPageController@getUpdatePage');
-
+Route::post('/updateAchievements','InformationPageController@postUpdateAchievements');

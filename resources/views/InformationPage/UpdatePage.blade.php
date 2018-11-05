@@ -194,21 +194,27 @@
                         <td label="チェック"><p><input type="checkbox" class="option-input05" checked /></p></td>
                     </tr>
 
-                    @foreach ($achievementMasters as $achievementMaster)
-                        <tr>
-                            <th>{{$achievementMaster->getId()}}</th>
-                            <td label="大分類"><p>{{$achievementMaster->getCategory()}}</p></td>
-                            <td label="中分類"><p>{{$achievementMaster->getSubcategory()}}</p></td>
-                            <td label="実績名"><p>{{$achievementMaster->getName()}}</p></td>
-                            <td label="実績内容"><p>{{$achievementMaster->getContent()}}</p></td>
-                            <td label="チェック">
-                                <p>
-                                    <input type="checkbox" class="option-input05"
-                                           {{$accountAchievement->hasAchievement($achievementMaster->getId()) ? "checked" : ""}}/>
-                                </p>
-                            </td>
-                        </tr>
-                    @endforeach
+                    <form action="/updateAchievements/" method="post">
+                        <input type="hidden" name="account_id" value="{{$accountAchievement->getAccountId()}}">
+                        @foreach ($achievementMasters as $achievementMaster)
+                            <tr>
+                                <th>{{$achievementMaster->getId()}}</th>
+                                <td label="大分類"><p>{{$achievementMaster->getCategory()}}</p></td>
+                                <td label="中分類"><p>{{$achievementMaster->getSubcategory()}}</p></td>
+                                <td label="実績名"><p>{{$achievementMaster->getName()}}</p></td>
+                                <td label="実績内容"><p>{{$achievementMaster->getContent()}}</p></td>
+                                <td label="チェック">
+                                    <p>
+                                        <input type="checkbox" class="option-input05" name="achievements[]"
+                                               value="{{$releasedAchievement = $achievementMaster->getId()}}"
+                                               {{$accountAchievement->hasAchievement($achievementMaster->getId()) ? "checked" : ""}}/>
+                                    </p>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        <button type="submit"> ok </button>
+                    </form>
                 </tbody>
             </table>
         </div>

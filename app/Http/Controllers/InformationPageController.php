@@ -94,4 +94,21 @@ class InformationPageController extends Controller
 			->with('achievementMasters',$achievementMasterCollection)
 			->with('accountAchievement',$accountAchievement);
 	}
+
+	public function postUpdateAchievements(Request $request)
+	{
+		$accountId =  $request->input('account_id');
+		$releasedAchievementIds = $request->input('achievements');
+
+		$releasedAchievementIds = is_null($releasedAchievementIds) ? [] : $releasedAchievementIds;
+
+		//アカウントの功績を取る。
+		$accountAchievementRepository = new AccountAchievementRepository();
+		$accountAchievements = $accountAchievementRepository->find($accountId);
+		$accountAchievements->updateByAchievementMasterIds($releasedAchievementIds);
+
+		$accountAchievementRepository->persist($accountAchievements);
+
+		return $this->getUpdatePage($request, $accountId);
+	}
 }
