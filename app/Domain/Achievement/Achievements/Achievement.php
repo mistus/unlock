@@ -22,7 +22,7 @@ class Achievement
 	 */
 	private $achievementContent;
 
-	public function __construct($achievementId, $achievementMasterId, $achievementName, $achievementContent)
+	public function __construct($achievementId = null, $achievementMasterId, $achievementName, $achievementContent)
 	{
 		$this->achievementId = $achievementId;
 		$this->achievementMasterId = $achievementMasterId;
